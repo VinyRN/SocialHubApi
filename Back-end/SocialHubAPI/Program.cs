@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SocialHub.Domain.Respositories.Interfaces;
 using SocialHub.Infrastructure.Data;
+using SocialHub.Infrastructure.Repositories;
 using SocialHubAPI.UseCases;
 using System.Security.Cryptography;
 
@@ -30,6 +31,7 @@ internal class Program
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<RegisterUserUseCase>();
         builder.Services.AddScoped<LoginUserUseCase>();
+        builder.Services.AddScoped<IPostRepository, PostRepository>();
 
         builder.Services.AddCors(options =>
         {

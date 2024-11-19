@@ -1,14 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SocialHub.Domain.Entities;
 using SocialHub.Domain.Respositories.Interfaces;
+using SocialHub.Infrastructure.Data;
 
 namespace SocialHub.Infrastructure.Repositories
 {
     public class PostRepository : IPostRepository
     {
-        private readonly DbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public PostRepository(DbContext context)
+        public PostRepository(ApplicationDbContext context)
         {
             _context = context;
         }

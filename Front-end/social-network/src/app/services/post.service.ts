@@ -16,9 +16,10 @@ export class PostService {
   }
 
   // Criar uma nova postagem
-  createPost(post: { title: string; content: string }): Observable<any> {
-    const token = localStorage.getItem('token'); // Obtenha o token salvo no localStorage
+  createPost(post: { Title: string; Content: string; UserId: string; CreatedAt: string }): Observable<any> {
+    const token = localStorage.getItem('token'); // Token de autenticação
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post(this.apiUrl, post, { headers });
   }
+  
 }

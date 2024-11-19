@@ -19,6 +19,8 @@
         {
             return PasswordHash == password;
         }
+
+        public ICollection<Post> Posts { get; set; } = new List<Post>();
     }
 
 }

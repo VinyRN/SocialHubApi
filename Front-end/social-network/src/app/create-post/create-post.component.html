@@ -1,0 +1,24 @@
+<div class="create-post-container">
+  <h1>Criar Postagem</h1>
+
+  <!-- Campo de título -->
+  <input
+    id="titulo"
+    name="titulo"
+    [(ngModel)]="newPost.Title"
+    placeholder="Título"
+    class="input"
+    required
+  />
+  <textarea
+    id="conteudo"
+    name="conteudo"
+    [(ngModel)]="newPost.Content"
+    placeholder="Conteúdo"
+    class="textarea"
+    required
+  ></textarea>
+
+  <!-- Botão de publicar -->
+  <button (click)="createPost()" class="btn">Publicar</button>
+</div>
