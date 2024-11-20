@@ -1,14 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SocialHub.Domain.DTOs.Request;
 using SocialHub.Domain.Entities;
-using SocialHub.Domain.Respositories.Interfaces;
+using SocialHub.Domain.Interfaces.Dapper;
+using SocialHub.Infrastructure.Data;
 
 namespace SocialHub.Infrastructure.Repositories
 {
     public class PostRepository : IPostRepository
     {
-        private readonly DbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public PostRepository(DbContext context)
+        public PostRepository(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -23,9 +25,9 @@ namespace SocialHub.Infrastructure.Repositories
             return await _context.Set<Post>().FindAsync(id);
         }
 
-        public async Task AddAsync(Post post)
+        public async Task AddAsync(PostRequestDTO post)
         {
-            await _context.Set<Post>().AddAsync(post);
+            await _context.Set<PostRequestDTO>().AddAsync(post);
             await _context.SaveChangesAsync();
         }
     }
