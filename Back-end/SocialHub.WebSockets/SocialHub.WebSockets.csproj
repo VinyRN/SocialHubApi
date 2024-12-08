@@ -8,12 +8,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\SocialHub.Domain\SocialHub.Domain.csproj" />
-    <ProjectReference Include="..\SocialHub.SignalR\SocialHub.SignalR.csproj" />
   </ItemGroup>
 
 </Project>

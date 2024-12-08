@@ -60,6 +60,14 @@ Antes de começar, você precisará ter o seguinte instalado na sua máquina:
 	
 	Listar postagens no feed.
 	
+ # Recursos de Notificação
+	- **Notificação de Novo Post**: Sempre que um novo post é adicionado, todos os usuários conectados recebem uma notificação em tempo real.
+	- **Notificação de Novo Registro**: Quando um novo usuário é registrado, uma notificação é enviada aos administradores ou a todos os usuários conectados.
+ 
+ # Como Funciona
+	- A conexão com o WebSocket é gerenciada pelo `NotificationHub`, que está configurado no endpoint `/notifications`.
+	- As notificações são enviadas do backend para o frontend por meio de chamadas ao método `SendAsync`.
+
 	
 ##🛠 Estrutura de Pastas
 	Abaixo está a estrutura principal do projeto:

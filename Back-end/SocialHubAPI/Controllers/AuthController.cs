@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SocialHub.Domain.DTOs;
 using SocialHubAPI.UseCases;
+using Microsoft.AspNetCore.SignalR;
+using SocialHub.SignalR; 
 
 namespace SocialHubAPI.Controllers
 {
@@ -11,12 +13,18 @@ namespace SocialHubAPI.Controllers
         private readonly RegisterUserUseCase _registerUserUseCase;
         private readonly LoginUserUseCase _loginUserUseCase;
         private readonly TokenService _tokenService;
+        private readonly IHubContext<NotificationHub> _hubContext;
 
-        public AuthController(RegisterUserUseCase registerUserUseCase, LoginUserUseCase loginUserUseCase, TokenService tokenService)
+        public AuthController(
+            RegisterUserUseCase registerUserUseCase,
+            LoginUserUseCase loginUserUseCase,
+            TokenService tokenService,
+            IHubContext<NotificationHub> hubContext)
         {
             _registerUserUseCase = registerUserUseCase;
             _loginUserUseCase = loginUserUseCase;
             _tokenService = tokenService;
+            _hubContext = hubContext;
         }
 
         [HttpPost("register")]
@@ -25,6 +33,11 @@ namespace SocialHubAPI.Controllers
             try
             {
                 await _registerUserUseCase.RegisterAsync(request.Email, request.Password);
+
+                // Enviar notificação para todos os administradores
+                var notificationMessage = $"Novo usuário registrado: {request.Email}";
+                await _hubContext.Clients.All.SendAsync("ReceiveNotification", notificationMessage);
+
                 return Ok("Usuário registrado com sucesso.");
             }
             catch (Exception ex)

@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SocialHub.Domain\SocialHub.Domain.csproj" />
     <ProjectReference Include="..\SocialHub.Infrastructure\SocialHub.Infrastructure.csproj" />
+    <ProjectReference Include="..\SocialHub.SignalR\SocialHub.SignalR.csproj" />
     <ProjectReference Include="..\SocialHubAPI.Services\SocialHubAPI.Services.csproj" />
   </ItemGroup>
 

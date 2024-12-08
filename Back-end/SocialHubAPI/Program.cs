@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SocialHub.Domain.Respositories.Interfaces;
 using SocialHub.Infrastructure.Data;
+using SocialHub.SignalR;
 using SocialHubAPI.UseCases;
 using System.Security.Cryptography;
 
@@ -53,6 +54,8 @@ internal class Program
         }
 
         app.UseCors("AllowSpecificOrigin");
+
+        app.MapHub<NotificationHub>("/notifications");
 
         app.UseHttpsRedirection();
 
